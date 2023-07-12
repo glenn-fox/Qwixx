@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qwixx", "Qwixx.csproj", "{D50839BD-55A4-48A2-A4A9-8D236E60003D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuixxTest", "..\QuixxTest\QuixxTest.csproj", "{0521B98A-9170-4D50-835A-8B081B1382DB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D50839BD-55A4-48A2-A4A9-8D236E60003D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D50839BD-55A4-48A2-A4A9-8D236E60003D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D50839BD-55A4-48A2-A4A9-8D236E60003D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D50839BD-55A4-48A2-A4A9-8D236E60003D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0521B98A-9170-4D50-835A-8B081B1382DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0521B98A-9170-4D50-835A-8B081B1382DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0521B98A-9170-4D50-835A-8B081B1382DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0521B98A-9170-4D50-835A-8B081B1382DB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1A0BF0B9-2AD6-4629-B88F-40B9D75DB795}
+	EndGlobalSection
+EndGlobal
