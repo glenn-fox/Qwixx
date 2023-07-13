@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+using System.Dynamic;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Qwixx
 {
@@ -17,28 +14,34 @@ namespace Qwixx
 			public bool Locked { get; set; }
 			public List<bool> Numbers { get; set; }
 
-			
 
 
-			public Line(string color, bool reversed) 
+
+			public Line(string color, bool reversed)
 			{
 				this.Color = color;
 				this.Reversed = reversed;
 				this.Locked = false;
 				// numbers[11] is for points when locking
-				this.Numbers = new List<bool>() {false, false, false, false, false, false, false, false, false, false, false, false };
+				this.Numbers = new List<bool>() { false, false, false, false, false, false, false, false, false, false, false, false };
 
 			}
+
+
+			public string GetColor()
+			{
+				return this.Color;
+			}
+
 		}
 
 
 		public List<Line> Lines { get; set; }
-		
+
 		//TODO add skips
 		public int Skips { get; set; }
 
-		public int Score { get; set; }	
-		public int PossibleScore { get; set; }
+		public int Score { get; set; }
 
 
 		public Board()
@@ -52,21 +55,20 @@ namespace Qwixx
 			this.Lines.Add(new Line("blue", true));
 			this.Skips = 0;
 
-			this.Score = 0;	
-			this.PossibleScore = 0;
+			this.Score = 0;
 		}
 
-		
+
 		public void UpdateScore()
 		{
 			int count;
 
 			int Score = 0;
 
-			foreach(Line line in this.Lines)
+			foreach (Line line in this.Lines)
 			{
 				count = 0;
-				foreach(bool number in line.Numbers)
+				foreach (bool number in line.Numbers)
 				{
 					if (number)
 					{
@@ -76,6 +78,18 @@ namespace Qwixx
 				Score += CalculateScore(count);
 			}
 			this.Score = Score;
+		}
+
+		public Line GetLineColor(string color)
+		{
+			foreach (Line line in this.Lines)
+			{
+				if (line.GetColor().Equals(color))
+				{
+					return line;
+				}
+			}
+			return null;
 		}
 
 
@@ -94,12 +108,12 @@ namespace Qwixx
 
 		public void DrawBoard()
 		{
-			foreach(Line line in this.Lines)
+			foreach (Line line in this.Lines)
 			{
 				Console.Write(line.Color.PadRight(7) + "|");
 
 
-				if (line.Reversed ) 
+				if (line.Reversed)
 				{
 					for (int i = 10; i >= 0; i--)
 					{
@@ -170,21 +184,14 @@ namespace Qwixx
 			return false;
 		}
 
-
-		public int GetPossibleScore()
+		public void GetValidMoves(Dice dice)
 		{
-			int possible = 0;
 
-
-
-
-			return possible;
 		}
-
 
 		public bool IsValid(string color, int number)
 		{
-			foreach(Line line in this.Lines)
+			foreach (Line line in this.Lines)
 			{
 				if (line.Color.Equals(color))
 				{

@@ -67,7 +67,7 @@ namespace Qwixx
 			int Player = 0;
 			while (Player < this.PlayerList.Count())
 			{
-				Console.WriteLine(this.PlayerList[Player].Name + " would you like to mark a " + this.Dice.Values[0].Item2);
+				Console.WriteLine(this.PlayerList[Player].Name + " would you like to mark a " + this.Dice.WhiteValues[0].Item2);
 
 				Player++;
 			}

@@ -7,7 +7,8 @@ namespace Qwixx
 	public class Dice
 	{
 		public List<Die> DiceList { get; set; }
-		public List<(string, int)> Values {get; set; }
+		public List<(string, int)> ColorValues {get; set; }
+		public List<(string, int)> WhiteValues { get; set; }
 		Random Rand { get; set; }
 		int NumDice { get; set; }
 		public List<string> Colors { get; set; }
@@ -56,7 +57,8 @@ namespace Qwixx
 			// add starting dice to list
 			this.DiceList = new List<Die>();
 			this.Colors= new List<string>();
-			this.Values = new List<(string, int)>();
+			this.WhiteValues = new List<(string, int)>();
+			this.ColorValues = new List<(string, int)>();
 			this.NumDice = 0;
 			this.AddDie("white");
 			this.AddDie("white");
@@ -114,17 +116,20 @@ namespace Qwixx
 
 		public void UpdateValues()
 		{
-			this.Values = new List<(string, int)>();
+			this.WhiteValues = new List<(string, int)>();
+			this.ColorValues = new List<(string, int)>();
+
+
 
 			// add white
-			this.Values.Add(("white", this.DiceList[0].GetValue() + this.DiceList[1].GetValue()));
+			this.WhiteValues.Add(("white", this.DiceList[0].GetValue() + this.DiceList[1].GetValue()));
 
 
 			// add other colors to white die
 			for (int i = 2; i < this.NumDice; i++)
 			{
-				this.Values.Add((this.DiceList[i].GetColor(), this.DiceList[i].GetValue() + this.DiceList[0].GetValue()));
-				this.Values.Add((this.DiceList[i].GetColor(), this.DiceList[i].GetValue() + this.DiceList[1].GetValue()));
+				this.ColorValues.Add((this.DiceList[i].GetColor(), this.DiceList[i].GetValue() + this.DiceList[0].GetValue()));
+				this.ColorValues.Add((this.DiceList[i].GetColor(), this.DiceList[i].GetValue() + this.DiceList[1].GetValue()));
 			}
 
 
@@ -134,7 +139,11 @@ namespace Qwixx
 		public void DisplayRoll()
 		{
 			Console.WriteLine("The current roll is: ");
-			foreach (var item in this.Values)
+			foreach (var item in this.WhiteValues)
+			{
+				Console.WriteLine(item.Item1 + ": " + item.Item2);
+			}
+			foreach (var item in this.ColorValues)
 			{
 				Console.WriteLine(item.Item1 + ": " + item.Item2);
 			}
